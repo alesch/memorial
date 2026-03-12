@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>In Loving Memory of Kurt Svensson</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+
+    <body class="bg-stone-50">
+        <audio id="bg-music" loop>
+            <source src="audio/background-music.mp3" type="audio/mpeg" />
+        </audio>
+
+        <div id="music-control" onclick="toggleMusic()">
+            <span id="music-text" class="text-sm font-medium text-stone-600"
+                >Play Music</span
+            >
+        </div>
+
+        <!-- Hero Section -->
+        <header class="py-20 px-6 text-center fade-in">
+            <div
+                class="mb-6 inline-block p-1 border border-stone-300 rounded-full"
+            >
+                <img
+                    src="images/profile.png"
+                    alt="Kurt Svensson"
+                    class="w-48 h-48 rounded-full object-cover shadow-sm"
+                />
+            </div>
+            <h1 class="text-5xl md:text-6xl mb-2 text-stone-800">
+                Kurt Svensson
+            </h1>
+            <p class="text-xl italic text-stone-500 mb-8">1953 — 2026</p>
+            <div class="w-16 h-px bg-stone-300 mx-auto"></div>
+        </header>
+
+        <main class="max-w-3xl mx-auto px-6 pb-20">
+            <!-- Biography -->
+            <section class="mb-20 text-center">
+                <h2 class="text-3xl mb-6 text-stone-700">A Life Well Lived</h2>
+                <div class="space-y-6 text-lg leading-relaxed text-stone-600">
+                    <p>
+                        Kurt Svensson passed away peacefully in his beloved
+                        Stockholm at the age of 73. A true son of Sweden, Kurt
+                        was known for his quiet wisdom, his love for the Baltic
+                        sea, and his unwavering kindness to neighbors and
+                        strangers alike.
+                    </p>
+                    <p>
+                        Throughout his seven decades, Kurt witnessed the
+                        changing landscape of his city, yet he remained a
+                        constant pillar for his family. Whether he was strolling
+                        through Gamla Stan or enjoying a quiet fika by the
+                        water, he found beauty in the simple rhythms of life.
+                    </p>
+                    <p class="italic">
+                        "Deeply missed, forever remembered, and always in our
+                        hearts."
+                    </p>
+                </div>
+            </section>
+
+            <!-- Slideshow -->
+            <section class="mb-20">
+                <h2 class="text-2xl mb-8 text-center text-stone-700">
+                    Cherished Moments
+                </h2>
+                <div class="slideshow-container bg-stone-200">
+                    <img
+                        class="slide active"
+                        src="images/photo1.png"
+                        alt="Moment 1"
+                    />
+                    <img class="slide" src="images/photo2.png" alt="Moment 2" />
+                    <img class="slide" src="images/photo3.png" alt="Moment 3" />
+                    <img class="slide" src="images/photo4.png" alt="Moment 4" />
+                    <img class="slide" src="images/photo5.png" alt="Moment 5" />
+                    <button
+                        onclick="changeSlide(-1)"
+                        class="absolute left-4 top-1/2 -translate-y-1/2 bg-white/50 p-2 rounded-full hover:bg-white/80 transition-all"
+                    >
+                        ←
+                    </button>
+                    <button
+                        onclick="changeSlide(1)"
+                        class="absolute right-4 top-1/2 -translate-y-1/2 bg-white/50 p-2 rounded-full hover:bg-white/80 transition-all"
+                    >
+                        →
+                    </button>
+                </div>
+            </section>
+
+            <!-- Video -->
+            <section class="mb-20">
+                <h2 class="text-2xl mb-8 text-center text-stone-700">
+                    Moving Tributes
+                </h2>
+                <div class="video-wrapper">
+                    <video
+                        controls
+                        poster="https://api.deepai.org/job-view-file/6e08282b-9f93-4963-8f0a-115f0709f191/outputs/output.jpg"
+                    >
+                        <source
+                            src="video/memorial-tribute.mp4"
+                            type="video/mp4"
+                        />
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </section>
+        </main>
+
+        <footer
+            class="py-10 text-center text-stone-400 text-sm border-t border-stone-100"
+        >
+            &copy; 2026 In Memory of Kurt Svensson
+        </footer>
+
+        <script>
+            // UI Controls
+            window.toggleMusic = () => {
+                const m = document.getElementById("bg-music");
+                const t = document.getElementById("music-text");
+                if (m.paused) {
+                    m.play();
+                    t.innerText = "Pause Music";
+                } else {
+                    m.pause();
+                    t.innerText = "Play Music";
+                }
+            };
+
+            let currentSlide = 0;
+            window.changeSlide = (n) => {
+                const slides = document.querySelectorAll(".slide");
+                if (slides.length === 0) return;
+                slides[currentSlide].classList.remove("active");
+                currentSlide =
+                    (currentSlide + n + slides.length) % slides.length;
+                slides[currentSlide].classList.add("active");
+            };
+
+            // Auto-advance slideshow
+            setInterval(() => changeSlide(1), 5000);
+        </script>
+    </body>
+</html>
