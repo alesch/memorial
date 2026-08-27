@@ -41,8 +41,15 @@ h3,
 .slide {
     display: none;
     height: 500px;
-    object-fit: cover;
+    object-fit: contain;
+    background-color: #000;
     width: 100%;
+}
+
+@media (max-width: 600px) {
+    .slide {
+        height: 60vh;
+    }
 }
 
 .active {
