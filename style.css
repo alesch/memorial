@@ -69,7 +69,7 @@ h3,
 
 #music-control {
     position: fixed;
-    bottom: 60px;
+    bottom: 100px;
     right: 20px;
     z-index: 1000;
     background: rgba(255, 255, 255, 0.9);
